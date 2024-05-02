@@ -14,6 +14,7 @@ class KNN:
     
     def predict(self, X):
         predictions = [self._predict(x) for x in X]
+        print(f'predictions: {predictions}')
         return predictions
 
     def _predict(self, x):
@@ -26,11 +27,12 @@ class KNN:
         k_indices = np.argsort(distances)[:self.k]
         k_nearest_labels = [self.y_train[i] for i in k_indices]
 
-        # print(f'k_indices: {k_indices}')
+        
         # print(f'k_nearest_labels: {k_nearest_labels}')
 
         # get the label by majority vote
         most_common = Counter(k_nearest_labels).most_common()
+        print(f'k_indices: {k_indices}; k_nearest_labels: {k_nearest_labels}; most_common: {most_common}')
         # print(f'most_common: {most_common}')
         # return k_nearest_labels
         return most_common[0][0]

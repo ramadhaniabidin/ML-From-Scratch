@@ -14,7 +14,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # plt.scatter(X[:,2], X[:,3], c=y, cmap=cmap, edgecolors='k', s=20)
 # plt.show()
 
-classifier = KNN(k=5)
+print(f'y_train: {y_train}')
+
+classifier = KNN(k=3)
 classifier.fit(X_train, y_train)
 predictions = classifier.predict(X_test)
 accuracy = classifier._accuracy(predictions, y_test)
