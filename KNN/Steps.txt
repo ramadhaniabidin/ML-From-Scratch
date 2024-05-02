@@ -1,0 +1,5 @@
+Given a data point:
+- Calculate its distance from all other data points in the dataset
+- Get the closest K points
+- For Regression Problems: Get the average of their values
+- For Classification Problems: Get the label with majority vote
