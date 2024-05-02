@@ -16,7 +16,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 print(f'y_train: {y_train}')
 
-classifier = KNN(k=3)
+classifier = KNN(k=7)
 classifier.fit(X_train, y_train)
 predictions = classifier.predict(X_test)
 accuracy = classifier._accuracy(predictions, y_test)
