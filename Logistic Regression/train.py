@@ -10,12 +10,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # print(y)
 
-model = LogisticRegression(learning_rate=0.01, epoch=500)
+model = LogisticRegression(learning_rate=0.00001, epoch=500)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
-print(y_test)
-print(y_pred)
+# print(y_test)
+# print(y_pred)
 
 def accuracy(y_pred, y_test):
     return np.sum(y_pred == y_test) / len(y_test)
