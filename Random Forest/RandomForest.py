@@ -1,4 +1,4 @@
-from ..DecisionTree import DecisionTree
+from DecisionTree import DecisionTree
 import numpy as np
 from collections import Counter
 
@@ -13,7 +13,7 @@ class RandomForest:
     def fit(self, X, y):
         self.trees = []
         for i in range(self.n_trees):
-            tree = DecisionTree.DecisionTree(max_depth=self.max_depth, min_samples_split=self.min_samples_split, n_features=self.n_features)
+            tree = DecisionTree(max_depth=self.max_depth, min_samples_split=self.min_samples_split, n_features=self.n_features)
             X_sample, y_sample = self._bootstrap_samples(X, y)
             tree.fit(X_sample, y_sample)
             self.trees.append(tree)
