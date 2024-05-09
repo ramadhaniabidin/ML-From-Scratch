@@ -1,15 +1,26 @@
 from DecisionTree import DecisionTree
 import numpy as np
 from collections import Counter
+import time
+
+def measure_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Time taken to run '{func.__name__} function': {end_time - start_time} seconds")
+        return result
+    return wrapper
 
 class RandomForest:
-    def __init__(self, n_trees=10, max_depth=10, min_samples_split=2, n_feature=None):
+    def __init__(self, n_trees=5, max_depth=5, min_samples_split=2, n_feature=None):
         self.n_trees = n_trees
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
         self.n_features = n_feature
         self.trees = []
 
+    @measure_time
     def fit(self, X, y):
         self.trees = []
         for i in range(self.n_trees):
