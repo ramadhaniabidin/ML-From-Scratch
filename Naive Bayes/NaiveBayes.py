@@ -11,7 +11,8 @@ class NaiveBayes:
         n_classes = len(self.classes)
 
         # calculate mean, variance, adn prior probability for each class
-        self.mean = self.var = np.zeros((n_classes, n_features))
+        self.mean = np.zeros((n_classes, n_features))
+        self.var = np.zeros((n_classes, n_features))
         self.priors = np.zeros(n_classes)
 
         for idx, c in enumerate(self.classes):
@@ -39,9 +40,9 @@ class NaiveBayes:
         return self.classes[np.argmax(posteriors)]
     
     def pdf(self, class_index, x):
-        mean = self.mean(class_index)
-        var = self.var(class_index)
-        numerator = np.exp((-(x - mean) ** 2) / (2 * var))
+        mean = self.mean[class_index]
+        var = self.var[class_index]
+        numerator = np.exp((-((x - mean) ** 2) / (2 * var)))
         denominator = np.sqrt(2 * np.pi * var)
 
         return numerator / denominator
