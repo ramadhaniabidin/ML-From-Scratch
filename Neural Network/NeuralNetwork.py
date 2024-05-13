@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 class NeuralNetwork:
     def __init__(self, n_input, n_output, n_hidden=5, learning_rate=0.0001, epoch=1000):
@@ -32,7 +33,7 @@ class NeuralNetwork:
 
             self.loss = np.mean((-y * np.log(self.A2) - (1 - y) * np.log(1 - self.A2)))
             self.loss_list.append(self.loss)
-            print(f'Iteration: {i} Loss: {self.loss:.2f}') if i%10==0 else None
+            print(f'Iteration: {i + 10} Loss: {self.loss:.2f}') if i%10==0 else None
 
             # Back propagation
             self.dLdZ2 = self.A2 - y
@@ -55,6 +56,13 @@ class NeuralNetwork:
             self.b1 -= self.learning_rate * self.dLdb1
             self.w2 -= self.learning_rate * self.dLdw2
             self.b2 -= self.learning_rate * self.dLdb2
+
+        # plot the loss graph
+        plt.plot(np.arange(self.epoch), self.loss_list)
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.title('Loss on training set')
+        plt.show()
 
 
     def predict(self, X):
