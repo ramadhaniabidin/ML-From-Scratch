@@ -21,7 +21,7 @@ y_test_encoded = encode_label(y_test)
 y_train_encoded = encode_label(y_train)
 
 
-model = NeuralNetwork(X_train.shape[1], n_output=y_train_encoded.shape[1], n_hidden=3, learning_rate=0.001)
+model = NeuralNetwork(X_train.shape[1], n_output=y_train_encoded.shape[1], n_hidden=5, learning_rate=0.001)
 model.fit(X_train, y_train_encoded)
 
 encoded_pred = model.predict(X_test)
